@@ -2,17 +2,19 @@ package core;
 
 public class Rod {
 	
-	public Rod(int id, Point startPoint, Point endPoint, Material material) {
+	public Rod(int id, Point startPoint, Point endPoint, Section section, Material material) {
 		super();
 		this.id = id;
 		this.startPoint = startPoint;
 		this.endPoint = endPoint;
+		this.section = section;
 		this.material = material;
 	}
 	
 	int id;
 	Point startPoint;
 	Point endPoint;
+	Section section;
 	Material material;
 	
 	public int getId() {
@@ -38,6 +40,12 @@ public class Rod {
 	}
 	public void setMaterial(Material material) {
 		this.material = material;
+	}
+	public Section getSection() {
+		return section;
+	}
+	public void setSection(Section section) {
+		this.section = section;
 	}
 
 }
