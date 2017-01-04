@@ -2,15 +2,28 @@ package main;
 
 import java.awt.EventQueue;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import java.awt.Frame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.awt.event.InputEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
+
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
@@ -19,6 +32,8 @@ public class Main {
 
 	private JFrame mainWindow;
 	private JTextField statusBar;
+	private JMenu menuLF;
+	private final ButtonGroup lfButtonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -41,6 +56,7 @@ public class Main {
 	 */
 	public Main() {
 		initialize();
+		initializeLF();
 	}
 
 	/**
@@ -74,7 +90,7 @@ public class Main {
 		JMenuItem menuFileSaveAs = new JMenuItem("Save As...");
 		menuFile.add(menuFileSaveAs);
 		
-		JMenu menuLF = new JMenu("L&F");
+		menuLF = new JMenu("L&F");
 		menuBar.add(menuLF);
 		
 		JMenu menuHelp = new JMenu("Help");
@@ -92,6 +108,70 @@ public class Main {
 		statusBar.setEditable(false);
 		statusBar.setColumns(30);
 		bottomPanel.add(statusBar);
+	}
+	
+	private void initializeLF() {
+		final UIManager.LookAndFeelInfo[] lfinfo = UIManager.getInstalledLookAndFeels();
+		for (int i = 0; i < lfinfo.length; i++) {
+			final LookAndFeelInfo lfName = lfinfo[i];
+			JRadioButtonMenuItem lfitem = new JRadioButtonMenuItem(lfinfo[i].getName());
+			lfitem.addItemListener(new ItemListener() {
+				public void itemStateChanged(ItemEvent e) {
+					if (e.getStateChange() == ItemEvent.SELECTED) {
+						String lookAndFeel = lfName.getClassName();
+						try {
+							UIManager.setLookAndFeel(lookAndFeel);
+						} catch (ClassNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (InstantiationException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IllegalAccessException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (UnsupportedLookAndFeelException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					};
+				}
+				
+				
+			});
+			//lfitem.setSelected(true);
+			menuLF.add(lfitem);
+			lfButtonGroup.add(lfitem);
+		}
+		
+		UIManager.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+				SwingUtilities.updateComponentTreeUI(mainWindow);
+			}
+		});
+		
+		// setup System L&F as default
+		try {
+			String lookAndFeel = UIManager.getSystemLookAndFeelClassName();
+			UIManager.setLookAndFeel(lookAndFeel);
+			for (int i = 0; i < lfinfo.length; i++) {
+				if (lfinfo[i].getClassName() == lookAndFeel) ;
+				
+			}
+			//UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
