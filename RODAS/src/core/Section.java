@@ -2,14 +2,14 @@ package core;
 
 public class Section {
 	
-	public Section(int id, double area, double ix, double iy, double wx, double wy) {
+	public Section(int id, double Area, double Ix, double Iy, double Wx, double Wy) {
 		super();
 		this.id = id;
-		Area = area;
-		Ix = ix;
-		Iy = iy;
-		Wx = wx;
-		Wy = wy;
+		this.Area = Area;
+		this.Ix = Ix;
+		this.Iy = Iy;
+		this.Wx = Wx;
+		this.Wy = Wy;
 	}
 	
 	int id;
@@ -28,32 +28,32 @@ public class Section {
 	public double getArea() {
 		return Area;
 	}
-	public void setArea(double area) {
-		Area = area;
+	public void setArea(double Area) {
+		this.Area = Area;
 	}
 	public double getIx() {
 		return Ix;
 	}
-	public void setIx(double ix) {
-		Ix = ix;
+	public void setIx(double Ix) {
+		this.Ix = Ix;
 	}
 	public double getIy() {
 		return Iy;
 	}
-	public void setIy(double iy) {
-		Iy = iy;
+	public void setIy(double Iy) {
+		this.Iy = Iy;
 	}
 	public double getWx() {
 		return Wx;
 	}
-	public void setWx(double wx) {
-		Wx = wx;
+	public void setWx(double Wx) {
+		this.Wx = Wx;
 	}
 	public double getWy() {
 		return Wy;
 	}
-	public void setWy(double wy) {
-		Wy = wy;
+	public void setWy(double Wy) {
+		this.Wy = Wy;
 	}
 
 }
