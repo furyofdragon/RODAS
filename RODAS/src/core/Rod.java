@@ -11,6 +11,11 @@ public class Rod {
 		this.material = material;
 	}
 	
+	public Rod(int id, int psid, int peid, int sid, int mid) {
+		this.id = id;
+		
+	}
+
 	int id;
 	Point startPoint;
 	Point endPoint;
