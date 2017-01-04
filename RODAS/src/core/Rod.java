@@ -2,11 +2,12 @@ package core;
 
 public class Rod {
 	
-	public Rod(int id, Point startPoint, Point endPoint) {
+	public Rod(int id, Point startPoint, Point endPoint, Material material) {
 		super();
 		this.id = id;
 		this.startPoint = startPoint;
 		this.endPoint = endPoint;
+		this.material = material;
 	}
 	
 	int id;
