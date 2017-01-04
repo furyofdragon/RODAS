@@ -79,6 +79,25 @@ public class ReadFemModel {
 		for (int i = 0; i < nSections; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());
+			double area = Double.parseDouble(token.nextToken().trim());
+			double Ix = Double.parseDouble(token.nextToken().trim());
+			double Iy = Double.parseDouble(token.nextToken().trim());
+			double Wx = Double.parseDouble(token.nextToken().trim());
+			double Wy = Double.parseDouble(token.nextToken().trim());
+			vSections.add(new Section(id, area, Ix, Iy, Wx, Wy));
+		}
+		offset = offset + nSections;
+		
+		nMaterials = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
+		offset = offset + 1;
+		vMaterials = new Vector<Material>();
+		for (int i = 0; i < nMaterials; i++) {
+			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
+			int id = Integer.parseInt(token.nextToken().trim());
+			double E = Double.parseDouble(token.nextToken().trim());
+			double mu = Double.parseDouble(token.nextToken().trim());
+			double ro = Double.parseDouble(token.nextToken().trim());
+			vMaterials.add(new Material(id, E, mu, ro));
 		}
 		offset = offset + nSections;
 		
