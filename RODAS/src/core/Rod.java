@@ -2,25 +2,20 @@ package core;
 
 public class Rod {
 	
-	public Rod(int id, Point startPoint, Point endPoint, Section section, Material material) {
+	public Rod(int id, int startPointId, int endPointId, int sectionId, int materialId) {
 		super();
 		this.id = id;
-		this.startPoint = startPoint;
-		this.endPoint = endPoint;
-		this.section = section;
-		this.material = material;
-	}
-	
-	public Rod(int id, int psid, int peid, int sid, int mid) {
-		this.id = id;
-		
+		this.startPointId = startPointId;
+		this.endPointId = endPointId;
+		this.sectionId = sectionId;
+		this.materialId = materialId;
 	}
 
 	int id;
-	Point startPoint;
-	Point endPoint;
-	Section section;
-	Material material;
+	int startPointId;
+	int endPointId;
+	int sectionId;
+	int materialId;
 	
 	public int getId() {
 		return id;
@@ -28,29 +23,37 @@ public class Rod {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Point getStartPoint() {
-		return startPoint;
+
+	public int getStartPointId() {
+		return startPointId;
 	}
-	public void setStartPoint(Point startPoint) {
-		this.startPoint = startPoint;
+
+	public void setStartPointId(int startPointId) {
+		this.startPointId = startPointId;
 	}
-	public Point getEndPoint() {
-		return endPoint;
+
+	public int getEndPointId() {
+		return endPointId;
 	}
-	public void setEndPoint(Point endPoint) {
-		this.endPoint = endPoint;
+
+	public void setEndPointId(int endPointId) {
+		this.endPointId = endPointId;
 	}
-	public Material getMaterial() {
-		return material;
+
+	public int getSectionId() {
+		return sectionId;
 	}
-	public void setMaterial(Material material) {
-		this.material = material;
+
+	public void setSectionId(int sectionId) {
+		this.sectionId = sectionId;
 	}
-	public Section getSection() {
-		return section;
+
+	public int getMaterialId() {
+		return materialId;
 	}
-	public void setSection(Section section) {
-		this.section = section;
+
+	public void setMaterialId(int materialId) {
+		this.materialId = materialId;
 	}
 
 }
