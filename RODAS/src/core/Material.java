@@ -1,8 +1,8 @@
 package core;
 
-public class Matherial {
+public class Material {
 	
-	public Matherial(int id, double E, double mu, double ro) {
+	public Material(int id, double E, double mu, double ro) {
 		super();
 		this.id = id;
 		this.E = E;
