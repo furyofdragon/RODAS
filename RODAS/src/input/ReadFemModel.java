@@ -30,6 +30,7 @@ public class ReadFemModel {
 		
 		String line = null;
 		
+		// read (cache) all file
 		ArrayList<String> al = new ArrayList<String>();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(strFemModelFile));
@@ -46,6 +47,8 @@ public class ReadFemModel {
 		
 		int offset = 0;
 		
+		
+		// read points (nodes)
 		nPoints = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
 		vPoints = new Vector<Point>();
@@ -59,6 +62,8 @@ public class ReadFemModel {
 		}
 		offset = offset + nPoints;
 		
+		
+		// read rods
 		nRods = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
 		vRods = new Vector<Rod>();
@@ -73,6 +78,8 @@ public class ReadFemModel {
 		}
 		offset = offset + nRods;
 		
+		
+		// read sections
 		nSections = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
 		vSections = new Vector<Section>();
@@ -88,6 +95,8 @@ public class ReadFemModel {
 		}
 		offset = offset + nSections;
 		
+		
+		// read materials
 		nMaterials = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
 		vMaterials = new Vector<Material>();
