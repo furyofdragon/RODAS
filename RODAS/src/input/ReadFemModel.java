@@ -108,7 +108,7 @@ public class ReadFemModel {
 			double ro = Double.parseDouble(token.nextToken().trim());
 			vMaterials.add(new Material(id, E, mu, ro));
 		}
-		offset = offset + nSections;
+		offset = offset + nMaterials;
 		
 	}
 	
