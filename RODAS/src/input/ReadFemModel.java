@@ -55,9 +55,9 @@ public class ReadFemModel {
 		for (int i = 0; i < nPoints; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());
-			float x = Float.parseFloat(token.nextToken().trim());
-			float y = Float.parseFloat(token.nextToken().trim());
-			float z = Float.parseFloat(token.nextToken().trim());
+			double x = Double.parseDouble(token.nextToken().trim());
+			double y = Double.parseDouble(token.nextToken().trim());
+			double z = Double.parseDouble(token.nextToken().trim());
 			vPoints.add(new Point(id, x, y, z));
 		}
 		offset = offset + nPoints;

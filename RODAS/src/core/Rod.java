@@ -5,17 +5,20 @@ public class Rod {
 	public Rod(int id, int startPointId, int endPointId, int sectionId, int materialId) {
 		super();
 		this.id = id;
-		this.startPointId = startPointId;
-		this.endPointId = endPointId;
-		this.sectionId = sectionId;
-		this.materialId = materialId;
+		this.startPoint.id = startPointId;
+		this.endPoint.id = endPointId;
+		this.section.id = sectionId;
+		this.material.id = materialId;
 	}
 
 	int id;
-	int startPointId;
-	int endPointId;
-	int sectionId;
-	int materialId;
+	Point startPoint;
+	Point endPoint;
+	Section section;
+	Material material;
+	
+	double length;
+	double mass;
 	
 	public int getId() {
 		return id;
@@ -25,35 +28,60 @@ public class Rod {
 	}
 
 	public int getStartPointId() {
-		return startPointId;
+		return startPoint.id;
 	}
 
 	public void setStartPointId(int startPointId) {
-		this.startPointId = startPointId;
+		this.startPoint.id = startPoint.id;
 	}
 
 	public int getEndPointId() {
-		return endPointId;
+		return endPoint.id;
 	}
 
 	public void setEndPointId(int endPointId) {
-		this.endPointId = endPointId;
+		this.endPoint.id = endPoint.id;
 	}
 
 	public int getSectionId() {
-		return sectionId;
+		return section.id;
 	}
 
 	public void setSectionId(int sectionId) {
-		this.sectionId = sectionId;
+		this.section.id = sectionId;
 	}
 
 	public int getMaterialId() {
-		return materialId;
+		return material.id;
 	}
 
 	public void setMaterialId(int materialId) {
-		this.materialId = materialId;
+		this.material.id = materialId;
+	}
+	
+	public void setLength() {
+		double x1 = startPoint.x;
+		double y1 = startPoint.y;
+		double z1 = startPoint.z;
+		double x2 = endPoint.x;
+		double y2 = endPoint.y;
+		double z2 = endPoint.z;
+		double dx = x2 - x1;
+		double dy = y2 - y1;
+		double dz = z2 - z1;
+		length = Math.sqrt(dx*dx + dy*dy + dz*dz);
+	}
+	
+	public double getLength() {
+		return length;
+	}
+	
+	public void setMass() {
+		mass = length * material.ro;
+	}
+	
+	public double getMass() {
+		return mass;
 	}
 
 }

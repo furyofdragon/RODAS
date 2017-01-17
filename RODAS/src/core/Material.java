@@ -18,26 +18,38 @@ public class Material {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public double getE() {
 		return E;
 	}
+	
 	public void setE(double e) {
 		E = e;
 	}
+	
 	public double getMu() {
 		return mu;
 	}
+	
 	public void setMu(double mu) {
 		this.mu = mu;
 	}
+	
 	public double getRo() {
 		return ro;
 	}
+	
 	public void setRo(double ro) {
 		this.ro = ro;
+	}
+	
+	public static Material getMaterial(int id) {
+		return null;
+
 	}
 
 }

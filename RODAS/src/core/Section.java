@@ -22,36 +22,47 @@ public class Section {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public double getArea() {
 		return Area;
 	}
+	
 	public void setArea(double Area) {
 		this.Area = Area;
 	}
+	
 	public double getIx() {
 		return Ix;
 	}
+	
 	public void setIx(double Ix) {
 		this.Ix = Ix;
 	}
+	
 	public double getIy() {
 		return Iy;
 	}
+	
 	public void setIy(double Iy) {
 		this.Iy = Iy;
 	}
+	
 	public double getWx() {
 		return Wx;
 	}
+	
 	public void setWx(double Wx) {
 		this.Wx = Wx;
 	}
+	
 	public double getWy() {
 		return Wy;
 	}
+	
 	public void setWy(double Wy) {
 		this.Wy = Wy;
 	}
