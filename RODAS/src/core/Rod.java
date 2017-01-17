@@ -12,8 +12,8 @@ public class Rod {
 	}
 
 	int id;
-	Point startPoint;
-	Point endPoint;
+	Node startPoint;
+	Node endPoint;
 	Section section;
 	Material material;
 	

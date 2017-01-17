@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import core.Material;
-import core.Point;
+import core.Node;
 import core.Rod;
 import core.Section;
 
@@ -21,7 +21,7 @@ public class ReadFemModel {
 	static int nSections;
 	static int nMaterials;
 	
-	static Vector<Point> vPoints;
+	static Vector<Node> vPoints;
 	static Vector<Rod> vRods;
 	static Vector<Section> vSections;
 	static Vector<Material> vMaterials;
@@ -51,14 +51,14 @@ public class ReadFemModel {
 		// read points (nodes)
 		nPoints = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
-		vPoints = new Vector<Point>();
+		vPoints = new Vector<Node>();
 		for (int i = 0; i < nPoints; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());
 			double x = Double.parseDouble(token.nextToken().trim());
 			double y = Double.parseDouble(token.nextToken().trim());
 			double z = Double.parseDouble(token.nextToken().trim());
-			vPoints.add(new Point(id, x, y, z));
+			vPoints.add(new Node(id, x, y, z));
 		}
 		offset = offset + nPoints;
 		
@@ -112,7 +112,7 @@ public class ReadFemModel {
 		
 	}
 	
-	static public Vector<Point> getvPoints () {
+	static public Vector<Node> getvPoints () {
 		return vPoints;
 	}
 	

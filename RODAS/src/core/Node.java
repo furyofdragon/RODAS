@@ -1,8 +1,8 @@
 package core;
 
-public class Point {
+public class Node {
 
-	public Point(int id, double x, double y, double z) {
+	public Node(int id, double x, double y, double z) {
 		super();
 		this.id = id;
 		this.x  = x;
