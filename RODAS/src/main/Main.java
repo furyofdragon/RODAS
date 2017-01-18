@@ -93,6 +93,21 @@ public class Main {
 		menuLF = new JMenu("L&F");
 		menuBar.add(menuLF);
 		
+		JMenu menuList = new JMenu("List");
+		menuBar.add(menuList);
+		
+		JMenuItem menuListNodes = new JMenuItem("Nodes");
+		menuList.add(menuListNodes);
+		
+		JMenuItem menuListRods = new JMenuItem("Rods");
+		menuList.add(menuListRods);
+		
+		JMenuItem menuListSections = new JMenuItem("Sections");
+		menuList.add(menuListSections);
+		
+		JMenuItem menuListMaterials = new JMenuItem("Materials");
+		menuList.add(menuListMaterials);
+		
 		JMenu menuHelp = new JMenu("Help");
 		menuBar.add(menuHelp);
 		
