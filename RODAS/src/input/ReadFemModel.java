@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+import core.FemModel;
 import core.Material;
 import core.Node;
 import core.Rod;
@@ -16,21 +17,12 @@ import core.Section;
 public class ReadFemModel {
 	
 	static int N = 0;				// number of lines in input file
-	static int nPoints;				// number of points
-	static int nRods;				// number of rods
-	static int nSections;
-	static int nMaterials;
-	
-	static Vector<Node> vNodes;
-	static Vector<Rod> vRods;
-	static Vector<Section> vSections;
-	static Vector<Material> vMaterials;
 
 	static void ReadFemModelFile(String strFemModelFile) {
 		
 		String line = null;
 		
-		// read (cache) all file
+		// read (cache) whole file
 		ArrayList<String> al = new ArrayList<String>();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(strFemModelFile));
@@ -49,41 +41,41 @@ public class ReadFemModel {
 		
 		
 		// read points (nodes)
-		nPoints = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
+		FemModel.nPoints = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
-		vNodes = new Vector<Node>();
-		for (int i = 0; i < nPoints; i++) {
+		FemModel.vNodes = new Vector<Node>();
+		for (int i = 0; i < FemModel.nPoints; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());
 			double x = Double.parseDouble(token.nextToken().trim());
 			double y = Double.parseDouble(token.nextToken().trim());
 			double z = Double.parseDouble(token.nextToken().trim());
-			vNodes.add(new Node(id, x, y, z));
+			FemModel.vNodes.add(new Node(id, x, y, z));
 		}
-		offset = offset + nPoints;
+		offset = offset + FemModel.nPoints;
 		
 		
 		// read rods
-		nRods = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
+		FemModel.nRods = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
-		vRods = new Vector<Rod>();
-		for (int i = 0; i < nRods; i++) {
+		FemModel.vRods = new Vector<Rod>();
+		for (int i = 0; i < FemModel.nRods; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());
 			int psid = Integer.parseInt(token.nextToken().trim());
 			int peid = Integer.parseInt(token.nextToken().trim());
 			int sid = Integer.parseInt(token.nextToken().trim());
 			int mid = Integer.parseInt(token.nextToken().trim());
-			vRods.add(new Rod(id, psid, peid, sid, mid));
+			FemModel.vRods.add(new Rod(id, psid, peid, sid, mid));
 		}
-		offset = offset + nRods;
+		offset = offset + FemModel.nRods;
 		
 		
 		// read sections
-		nSections = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
+		FemModel.nSections = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
-		vSections = new Vector<Section>();
-		for (int i = 0; i < nSections; i++) {
+		FemModel.vSections = new Vector<Section>();
+		for (int i = 0; i < FemModel.nSections; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());
 			double area = Double.parseDouble(token.nextToken().trim());
@@ -91,41 +83,25 @@ public class ReadFemModel {
 			double Iy = Double.parseDouble(token.nextToken().trim());
 			double Wx = Double.parseDouble(token.nextToken().trim());
 			double Wy = Double.parseDouble(token.nextToken().trim());
-			vSections.add(new Section(id, area, Ix, Iy, Wx, Wy));
+			FemModel.vSections.add(new Section(id, area, Ix, Iy, Wx, Wy));
 		}
-		offset = offset + nSections;
+		offset = offset + FemModel.nSections;
 		
 		
 		// read materials
-		nMaterials = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
+		FemModel.nMaterials = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
-		vMaterials = new Vector<Material>();
-		for (int i = 0; i < nMaterials; i++) {
+		FemModel.vMaterials = new Vector<Material>();
+		for (int i = 0; i < FemModel.nMaterials; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());
 			double E = Double.parseDouble(token.nextToken().trim());
 			double mu = Double.parseDouble(token.nextToken().trim());
 			double ro = Double.parseDouble(token.nextToken().trim());
-			vMaterials.add(new Material(id, E, mu, ro));
+			FemModel.vMaterials.add(new Material(id, E, mu, ro));
 		}
-		offset = offset + nMaterials;
+		offset = offset + FemModel.nMaterials;
 		
-	}
-	
-	static public Vector<Node> getvNodes () {
-		return vNodes;
-	}
-	
-	static public Vector<Rod> getvRods () {
-		return vRods;
-	}
-
-	public static Vector<Section> getvSections() {
-		return vSections;
-	}
-
-	public static Vector<Material> getvMaterials() {
-		return vMaterials;
 	}
 	
 }
