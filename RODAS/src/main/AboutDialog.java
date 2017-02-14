@@ -50,12 +50,13 @@ public class AboutDialog extends JDialog {
 			contentPanel.add(lbLogo);
 		}
 		{
-			JTextArea txtrRodasIsFea = new JTextArea();
-			txtrRodasIsFea.setWrapStyleWord(true);
-			txtrRodasIsFea.setBackground(getContentPane().getBackground());
-			txtrRodasIsFea.setFont(new Font("Monospaced", Font.PLAIN, 12));
-			txtrRodasIsFea.setText("RODAS is FEA software.\r\n\r\nCopyright 2017.");
-			contentPanel.add(txtrRodasIsFea);
+			JTextArea txtAboutProgram = new JTextArea();
+			txtAboutProgram.setEditable(false);
+			txtAboutProgram.setWrapStyleWord(true);
+			txtAboutProgram.setBackground(getContentPane().getBackground());
+			txtAboutProgram.setFont(new Font("Monospaced", Font.PLAIN, 12));
+			txtAboutProgram.setText("RODAS is FEA software.\r\n\r\nCopyright 2017.");
+			contentPanel.add(txtAboutProgram);
 		}
 		{
 			JPanel buttonPane = new JPanel();
