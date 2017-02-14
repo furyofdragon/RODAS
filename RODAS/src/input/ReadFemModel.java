@@ -18,7 +18,7 @@ public class ReadFemModel {
 	
 	static int N = 0;				// number of lines in input file
 
-	static void ReadFemModelFile(String strFemModelFile) {
+	public static void ReadFemModelFile(String strFemModelFile) {
 		
 		String line = null;
 		

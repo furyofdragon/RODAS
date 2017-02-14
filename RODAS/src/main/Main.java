@@ -3,6 +3,7 @@ package main;
 import java.awt.EventQueue;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import java.awt.Frame;
 import javax.swing.JMenuBar;
@@ -13,6 +14,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import input.ReadFemModel;
 
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
@@ -82,6 +86,26 @@ public class Main {
 		menuBar.add(menuFile);
 		
 		JMenuItem menuFileOpen = new JMenuItem("Open...");
+		menuFileOpen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fileopen = new JFileChooser();
+				FileNameExtensionFilter femFileFilter = new FileNameExtensionFilter("RODAS model (*.FEM)", "FEM");
+				fileopen.setFileFilter(femFileFilter);				// default file filter
+				int rOpen = fileopen.showOpenDialog(mainWindow);
+				switch (rOpen) {
+				case JFileChooser.APPROVE_OPTION :
+					String inFile = fileopen.getSelectedFile().getPath();
+					if(fileopen.getFileFilter().equals(femFileFilter)) {
+						ReadFemModel.ReadFemModelFile(inFile);
+					}
+					break;
+				case JFileChooser.CANCEL_OPTION :
+					break;
+				case JFileChooser.ERROR_OPTION :
+					break;
+			}
+			}
+		});
 		menuFileOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
 		menuFile.add(menuFileOpen);
 		
