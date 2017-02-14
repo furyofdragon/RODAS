@@ -55,7 +55,7 @@ public class AboutDialog extends JDialog {
 			txtAboutProgram.setWrapStyleWord(true);
 			txtAboutProgram.setBackground(getContentPane().getBackground());
 			txtAboutProgram.setFont(new Font("Monospaced", Font.PLAIN, 12));
-			txtAboutProgram.setText("RODAS is FEA software.\r\n\r\nCopyright 2017.");
+			txtAboutProgram.setText("RODAS is FEA software.\r\n\r\n\u00A9 Copyright furyofdragon, 2017.");
 			contentPanel.add(txtAboutProgram);
 		}
 		{
