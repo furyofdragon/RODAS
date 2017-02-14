@@ -27,6 +27,8 @@ import javax.swing.JRadioButtonMenuItem;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Main {
 
@@ -112,6 +114,11 @@ public class Main {
 		menuBar.add(menuHelp);
 		
 		JMenuItem menuHelpAbout = new JMenuItem("About");
+		menuHelpAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AboutDialog.main(null);
+			}
+		});
 		menuHelp.add(menuHelpAbout);
 		
 		JPanel bottomPanel = new JPanel();
