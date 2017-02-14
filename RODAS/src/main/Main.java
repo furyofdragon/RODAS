@@ -99,6 +99,11 @@ public class Main {
 		menuBar.add(menuList);
 		
 		JMenuItem menuListNodes = new JMenuItem("Nodes");
+		menuListNodes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListNodesDialog.main(null);
+			}
+		});
 		menuList.add(menuListNodes);
 		
 		JMenuItem menuListRods = new JMenuItem("Rods");
