@@ -61,6 +61,10 @@ public class Rod {
 	
 	/*
 	public void setLength() {
+		
+		int spid = 1;
+		Node sp = Node.getById(spid);
+		
 		double x1 = startPoint.x;
 		double y1 = startPoint.y;
 		double z1 = startPoint.z;
