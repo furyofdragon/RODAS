@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -18,7 +19,8 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
 import java.awt.Toolkit;
 
-public class ListNodesDialog2 extends JDialog {
+//public class ListNodesDialog2 extends JDialog {
+public class ListNodesDialog2 extends JFrame {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextArea textArea;
