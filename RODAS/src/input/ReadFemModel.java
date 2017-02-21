@@ -58,7 +58,7 @@ public class ReadFemModel {
 		// read rods
 		FemModel.nRods = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
-		FemModel.vRods = new Vector<Rod>();
+		//FemModel.vRods = new Vector<Rod>();
 		for (int i = 0; i < FemModel.nRods; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());
@@ -74,7 +74,7 @@ public class ReadFemModel {
 		// read sections
 		FemModel.nSections = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
-		FemModel.vSections = new Vector<Section>();
+		//FemModel.vSections = new Vector<Section>();
 		for (int i = 0; i < FemModel.nSections; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());
@@ -91,7 +91,7 @@ public class ReadFemModel {
 		// read materials
 		FemModel.nMaterials = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
-		FemModel.vMaterials = new Vector<Material>();
+		//FemModel.vMaterials = new Vector<Material>();
 		for (int i = 0; i < FemModel.nMaterials; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());

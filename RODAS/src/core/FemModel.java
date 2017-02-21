@@ -10,9 +10,9 @@ public class FemModel {
 	public static int nMaterials;			// number of materials
 	
 	public static Vector<Node> vNodes = new Vector<Node>();;
-	public static Vector<Rod> vRods;
-	public static Vector<Section> vSections;
-	public static Vector<Material> vMaterials;
+	public static Vector<Rod> vRods = new Vector<Rod>();
+	public static Vector<Section> vSections = new Vector<Section>();
+	public static Vector<Material> vMaterials = new Vector<Material>();
 	
 	static public Vector<Node> getvNodes () {
 		return vNodes;
