@@ -21,6 +21,7 @@ public class ListNodesDialog extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JScrollPane scrollPane;
 	static JTable table;
+	final String[] tableHeader = new String[] {"id", "x", "y", "z"};
 
 	/**
 	 * Launch the application.
@@ -70,9 +71,7 @@ public class ListNodesDialog extends JDialog {
 			new Object[][] {
 				{null, null, null, null},
 			},
-			new String[] {
-				"id", "x", "y", "z"
-			}
+			tableHeader
 		) {
 			Class[] columnTypes = new Class[] {
 				Integer.class, Double.class, Double.class, Double.class

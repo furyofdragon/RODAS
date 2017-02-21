@@ -125,7 +125,8 @@ public class Main {
 		JMenuItem menuListNodes = new JMenuItem("Nodes");
 		menuListNodes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListNodesDialog.main(null);
+				//ListNodesDialog.main(null);
+				ListNodesDialog2.main(null);
 			}
 		});
 		menuList.add(menuListNodes);

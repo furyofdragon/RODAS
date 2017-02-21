@@ -9,7 +9,7 @@ public class FemModel {
 	public static int nSections;			// number of sections
 	public static int nMaterials;			// number of materials
 	
-	public static Vector<Node> vNodes;
+	public static Vector<Node> vNodes = new Vector<Node>();;
 	public static Vector<Rod> vRods;
 	public static Vector<Section> vSections;
 	public static Vector<Material> vMaterials;

@@ -43,7 +43,7 @@ public class ReadFemModel {
 		// read points (nodes)
 		FemModel.nPoints = Integer.parseInt(new StringTokenizer(al.get(offset), " ").nextToken().trim());
 		offset = offset + 1;
-		FemModel.vNodes = new Vector<Node>();
+		//FemModel.vNodes = new Vector<Node>();
 		for (int i = 0; i < FemModel.nPoints; i++) {
 			StringTokenizer token = new StringTokenizer(al.get(i+offset), " ");
 			int id = Integer.parseInt(token.nextToken().trim());
