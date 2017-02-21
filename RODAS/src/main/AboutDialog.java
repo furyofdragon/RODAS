@@ -36,6 +36,7 @@ public class AboutDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public AboutDialog() {
+		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AboutDialog.class.getResource("/javax/swing/plaf/metal/icons/ocean/question.png")));
 		setTitle("About RODAS");
 		setBounds(100, 100, 450, 300);
