@@ -49,7 +49,7 @@ public class ListNodesDialog2 extends JFrame {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
 			textArea = new JTextArea();
-			textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+			textArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
 			
 			if (FemModel.vNodes.isEmpty()) {
 				textArea.append("No data\n");

@@ -47,7 +47,7 @@ public class ListSectionsDialog extends JFrame {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		JTextArea textArea = new JTextArea();
-		textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+		textArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		
 		if (FemModel.vSections.isEmpty()) {
 			textArea.append("No data\n");
