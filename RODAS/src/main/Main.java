@@ -140,6 +140,11 @@ public class Main {
 		menuList.add(menuListRods);
 		
 		JMenuItem menuListSections = new JMenuItem("Sections");
+		menuListSections.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListSectionsDialog.main(null);
+			}
+		});
 		menuList.add(menuListSections);
 		
 		JMenuItem menuListMaterials = new JMenuItem("Materials");
