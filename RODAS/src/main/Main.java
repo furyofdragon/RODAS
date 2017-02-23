@@ -148,6 +148,11 @@ public class Main {
 		menuList.add(menuListSections);
 		
 		JMenuItem menuListMaterials = new JMenuItem("Materials");
+		menuListMaterials.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListMaterialsDialog.main(null);
+			}
+		});
 		menuList.add(menuListMaterials);
 		
 		JMenu menuHelp = new JMenu("Help");
