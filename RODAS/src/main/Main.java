@@ -21,6 +21,13 @@ import input.ReadFemModel;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.awt.event.InputEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -40,6 +47,8 @@ public class Main {
 	private JTextField statusBar;
 	private JMenu menuLF;
 	private final ButtonGroup lfButtonGroup = new ButtonGroup();
+	private String settingsFile = "settings.ini";
+	private String lastInputDir = "";
 
 	/**
 	 * Launch the application.
@@ -61,8 +70,38 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
+		readsettings();
 		initialize();
 		initializeLF();
+	}
+
+	private void readsettings() {
+		// read settings.ini file for lastdir location
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(settingsFile));
+			lastInputDir  = br.readLine();
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			lastInputDir = "";
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			lastInputDir  = "";
+		}
+	}
+	
+	private void writeSettings() {
+		// write settings.ini file for lastdir location
+		try {
+			PrintWriter pw = new PrintWriter(settingsFile, "UTF-8");
+			pw.println(lastInputDir);
+			pw.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -91,9 +130,12 @@ public class Main {
 				JFileChooser fileopen = new JFileChooser();
 				FileNameExtensionFilter femFileFilter = new FileNameExtensionFilter("RODAS model (*.FEM)", "FEM");
 				fileopen.setFileFilter(femFileFilter);				// default file filter
+				if (lastInputDir != null) fileopen.setCurrentDirectory(new File(lastInputDir));
 				int rOpen = fileopen.showOpenDialog(mainWindow);
 				switch (rOpen) {
 				case JFileChooser.APPROVE_OPTION :
+					lastInputDir = fileopen.getCurrentDirectory().toString();
+					writeSettings();
 					String inFile = fileopen.getSelectedFile().getPath();
 					if(fileopen.getFileFilter().equals(femFileFilter)) {
 						ReadFemModel.ReadFemModelFile(inFile);
