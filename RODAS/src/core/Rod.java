@@ -59,18 +59,17 @@ public class Rod {
 		this.materialId = materialId;
 	}
 	
-	/*
+	
 	public void setLength() {
+		Node node1 = FemModel.getNodeById(startPointId);
+		Node node2 = FemModel.getNodeById(endPointId);
 		
-		int spid = 1;
-		Node sp = Node.getById(spid);
-		
-		double x1 = startPoint.x;
-		double y1 = startPoint.y;
-		double z1 = startPoint.z;
-		double x2 = endPoint.x;
-		double y2 = endPoint.y;
-		double z2 = endPoint.z;
+		double x1 = node1.x;
+		double y1 = node1.y;
+		double z1 = node1.z;
+		double x2 = node2.x;
+		double y2 = node2.y;
+		double z2 = node2.z;
 		double dx = x2 - x1;
 		double dy = y2 - y1;
 		double dz = z2 - z1;
@@ -81,13 +80,15 @@ public class Rod {
 		return length;
 	}
 	
+	
 	public void setMass() {
-		mass = length * material.ro;
+		Material material = FemModel.getMaterialById(materialId);
+		Section section = FemModel.getSectionById(sectionId);
+		mass = length * section.Area * material.ro;
 	}
 	
 	public double getMass() {
 		return mass;
 	}
-	*/
 
 }

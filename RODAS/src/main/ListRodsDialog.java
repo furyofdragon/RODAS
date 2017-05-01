@@ -55,14 +55,16 @@ public class ListRodsDialog extends JFrame {
 		}
 		else
 		{
-			textArea.append("Id StartPoint EndPoint Section Matherial\n");
+			textArea.append("Id StartPoint EndPoint Section Matherial Length Mass\n");
 			
 			for (int i = 0; i < FemModel.vRods.size(); i++) {
 				textArea.append(Integer.toString(FemModel.vRods.get(i).getId()) + "   " +
 								Integer.toString(FemModel.vRods.get(i).getStartPointId()) + "   " +
 								Integer.toString(FemModel.vRods.get(i).getEndPointId()) + "   " +
 								Integer.toString(FemModel.vRods.get(i).getSectionId()) + "   " +
-								Integer.toString(FemModel.vRods.get(i).getMaterialId()) + "\n");
+								Integer.toString(FemModel.vRods.get(i).getMaterialId()) + "   " +
+								Double.toString(FemModel.vRods.get(i).getLength()) + "   " +
+								Double.toString(FemModel.vRods.get(i).getMass()) + "\n");
 			}
 		}
 		
