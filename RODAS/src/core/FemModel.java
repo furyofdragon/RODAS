@@ -2,6 +2,8 @@ package core;
 
 import java.util.Vector;
 
+import main.Main;
+
 public class FemModel {
 	
 	public static int nPoints;				// number of points
@@ -72,6 +74,9 @@ public class FemModel {
 			cmass = cmass + vRods.elementAt(i).mass;
 		}
 		mass = cmass;
+		
+		main.Main.statusBar.setText("Model mass = " + Double.toString(mass));
+		
 	}
 
 }

@@ -44,7 +44,7 @@ import java.awt.event.ActionEvent;
 public class Main {
 
 	private JFrame mainWindow;
-	private JTextField statusBar;
+	public static JTextField statusBar;
 	private JMenu menuLF;
 	private final ButtonGroup lfButtonGroup = new ButtonGroup();
 	private String settingsFile = "settings.ini";
