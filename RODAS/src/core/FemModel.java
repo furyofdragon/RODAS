@@ -9,6 +9,8 @@ public class FemModel {
 	public static int nSections;			// number of sections
 	public static int nMaterials;			// number of materials
 	
+	public static double mass;
+	
 	public static Vector<Node> vNodes = new Vector<Node>();;
 	public static Vector<Rod> vRods = new Vector<Rod>();
 	public static Vector<Section> vSections = new Vector<Section>();
@@ -58,6 +60,18 @@ public class FemModel {
 			}
 		}
 		return returnSection;
+	}
+	
+	double getMass() {
+		return mass;
+	}
+	
+	public static void calcMass() {
+		double cmass = 0;
+		for (int i = 0; i < nRods; i++) {
+			cmass = cmass + vRods.elementAt(i).mass;
+		}
+		mass = cmass;
 	}
 
 }

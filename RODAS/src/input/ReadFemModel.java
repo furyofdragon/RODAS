@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-import java.util.Vector;
 
 import core.FemModel;
 import core.Material;
@@ -107,6 +106,9 @@ public class ReadFemModel {
 			FemModel.vRods.elementAt(i).setLength();
 			FemModel.vRods.elementAt(i).setMass();
 		}
+		
+		// calc model mass
+		FemModel.calcMass();
 		
 	}
 	
