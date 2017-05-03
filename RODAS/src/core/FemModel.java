@@ -2,8 +2,6 @@ package core;
 
 import java.util.Vector;
 
-import main.Main;
-
 public class FemModel {
 	
 	public static int nPoints;				// number of points
