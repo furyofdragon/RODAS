@@ -47,7 +47,7 @@ public class AboutDialog extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
 			JLabel lbLogo = new JLabel("");
-			lbLogo.setIcon(new ImageIcon(AboutDialog.class.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-information@2x.png")));
+			lbLogo.setIcon(new ImageIcon(AboutDialog.class.getResource("/javax/swing/plaf/metal/icons/ocean/info.png")));
 			contentPanel.add(lbLogo);
 		}
 		{
