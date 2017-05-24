@@ -110,6 +110,8 @@ public class ReadFemModel {
 		// calc model mass
 		FemModel.calcMass();
 		
+		FemModel.calcBoundaries();
+		
 	}
 	
 }

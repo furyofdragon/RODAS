@@ -11,6 +11,8 @@ public class FemModel {
 	
 	public static double mass;
 	
+	public static double xmin, xmax, ymin, ymax, zmin, zmax;
+	
 	public static Vector<Node> vNodes = new Vector<Node>();;
 	public static Vector<Rod> vRods = new Vector<Rod>();
 	public static Vector<Section> vSections = new Vector<Section>();
@@ -75,6 +77,19 @@ public class FemModel {
 		
 		main.Main.statusBar.setText("Model mass = " + Double.toString(mass));
 		
+	}
+	
+	public static void calcBoundaries() {
+		xmin = 0; xmax = 0; ymin = 0; ymax = 0; zmin = 0; zmax = 0;
+		
+		for (int i = 0; i < nPoints; i++) {
+			xmin = Math.min(xmin, vNodes.elementAt(i).x);
+			ymin = Math.min(ymin, vNodes.elementAt(i).y);
+			zmin = Math.min(zmin, vNodes.elementAt(i).z);
+			xmax = Math.max(xmax, vNodes.elementAt(i).x);
+			ymax = Math.max(ymax, vNodes.elementAt(i).y);
+			zmax = Math.max(zmax, vNodes.elementAt(i).z);
+		}
 	}
 
 }
