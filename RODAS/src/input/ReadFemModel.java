@@ -80,6 +80,7 @@ public class ReadFemModel {
 			double area = Double.parseDouble(token.nextToken().trim());
 			double Ix = Double.parseDouble(token.nextToken().trim());
 			double Iy = Double.parseDouble(token.nextToken().trim());
+			// TODO add input polar moment of inertia
 			double Wx = Double.parseDouble(token.nextToken().trim());
 			double Wy = Double.parseDouble(token.nextToken().trim());
 			FemModel.vSections.add(new Section(id, area, Ix, Iy, Wx, Wy));
