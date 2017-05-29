@@ -55,10 +55,5 @@ public class Material {
 	public void setRo(double ro) {
 		this.ro = ro;
 	}
-	
-	public static Material getMaterial(int id) {
-		return null;
-
-	}
 
 }

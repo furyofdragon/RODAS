@@ -112,8 +112,7 @@ public class Rod {
 		double A = section.Area;
 		double Iy = section.Ix;
 		double Iz = section.Iy;
-		// TODO fix input
-		double Ik = 0;
+		double Ik = section.Ik;
 		
 		double length2 = length * length;
 		double length3 = Math.pow(length, 3);

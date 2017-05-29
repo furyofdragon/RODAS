@@ -8,6 +8,18 @@ public class Section {
 		this.Area = Area;
 		this.Ix = Ix;
 		this.Iy = Iy;
+		this.Ik = 0;
+		this.Wx = Wx;
+		this.Wy = Wy;
+	}
+	
+	public Section(int id, double Area, double Ix, double Iy, double Ik, double Wx, double Wy) {
+		super();
+		this.id = id;
+		this.Area = Area;
+		this.Ix = Ix;
+		this.Iy = Iy;
+		this.Ik = Ik;
 		this.Wx = Wx;
 		this.Wy = Wy;
 	}
@@ -16,6 +28,7 @@ public class Section {
 	double Area;
 	double Ix;
 	double Iy;
+	double Ik;
 	double Wx;
 	double Wy;
 	
