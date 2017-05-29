@@ -101,17 +101,8 @@ public class ReadFemModel {
 		}
 		offset = offset + FemModel.nMaterials;
 		
-		// update rods
-		for (int i = 0; i < FemModel.vRods.size(); i++) {
-			FemModel.vRods.elementAt(i).setLength();
-			FemModel.vRods.elementAt(i).setMass();
-			FemModel.vRods.elementAt(i).calcKlocal();
-		}
-		
-		// calc model mass
-		FemModel.calcMass();
-		
-		FemModel.calcBoundaries();
+		// update whole model
+		FemModel.updateFemModel();
 		
 	}
 	
