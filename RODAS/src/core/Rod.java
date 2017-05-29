@@ -156,7 +156,7 @@ public class Rod {
 		
 		Klocal[11][11] = 4 * E * Iy / length;
 		
-		// below main diagonal - simmetrical
+		// below main diagonal - symmetrical
 		for (int i = 1; i < 12; i++) {
 			for (int j = 0; j < i; j++) {
 				Klocal[i][j] = Klocal[j][i];
