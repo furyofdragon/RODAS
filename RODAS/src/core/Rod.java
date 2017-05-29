@@ -108,11 +108,11 @@ public class Rod {
 		Section section = FemModel.getSectionById(sectionId);
 		
 		double E = material.E;
+		double G = material.G;
 		double A = section.Area;
 		double Iy = section.Ix;
 		double Iz = section.Iy;
 		// TODO fix input
-		double G = 0;
 		double Ik = 0;
 		
 		double length2 = length * length;

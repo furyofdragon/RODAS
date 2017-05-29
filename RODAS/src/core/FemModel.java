@@ -93,6 +93,11 @@ public class FemModel {
 	}
 	
 	public static void updateFemModel() {
+		// update materials
+		for (int i = 0; i < FemModel.vMaterials.size(); i++) {
+			FemModel.vMaterials.elementAt(i).setG();
+		}
+		
 		// update rods
 		for (int i = 0; i < FemModel.vRods.size(); i++) {
 			FemModel.vRods.elementAt(i).setLength();

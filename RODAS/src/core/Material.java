@@ -13,6 +13,7 @@ public class Material {
 	int id;
 	double E;
 	double mu;
+	double G;
 	double ro;
 	
 	public int getId() {
@@ -37,6 +38,14 @@ public class Material {
 	
 	public void setMu(double mu) {
 		this.mu = mu;
+	}
+	
+	public double getG() {
+		return G;
+	}
+	
+	public void setG() {
+		this.G = 0.5 * this.E / (1 + this.mu);
 	}
 	
 	public double getRo() {
