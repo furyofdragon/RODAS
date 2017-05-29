@@ -105,6 +105,7 @@ public class ReadFemModel {
 		for (int i = 0; i < FemModel.vRods.size(); i++) {
 			FemModel.vRods.elementAt(i).setLength();
 			FemModel.vRods.elementAt(i).setMass();
+			FemModel.vRods.elementAt(i).calcKlocal();
 		}
 		
 		// calc model mass
