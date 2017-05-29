@@ -47,16 +47,4 @@ public class Node {
 		this.z = z;
 	}
 	
-	/*
-	public static Node getById(int id) {
-		if (this.id == id) {
-			return Node.this;
-		}
-		else
-		{
-			return null;
-		}
-	}
-	*/
-	
 }
