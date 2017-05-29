@@ -116,6 +116,9 @@ public class Rod {
 		
 		double length2 = length * length;
 		double length3 = Math.pow(length, 3);
+		
+		// order
+		// u1x u1y u1z fi1x fi1y fi1z u2x u2y u2z fi2x fi2y fi2z
 			
 		Klocal[0][0]   = E * A / length;
 		Klocal[0][6]   = -1 * E * A / length;
