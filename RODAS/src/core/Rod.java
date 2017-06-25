@@ -27,6 +27,7 @@ public class Rod {
 	double mass;
 	
 	double[][] Klocal = new double[12][12];		// stiffness matrix 12x12 in local coordinates
+	double[][] Transl = new double[12][12];		// coordinate translation matrix
 	
 	
 	public int getId() {
@@ -164,6 +165,29 @@ public class Rod {
 				Klocal[i][j] = Klocal[j][i];
 			}
 		}
+	}
+	
+	public void calcTransl() {
+		Node node1 = FemModel.getNodeById(startPointId);
+		Node node2 = FemModel.getNodeById(endPointId);
+		
+		double x1 = node1.x;
+		double y1 = node1.y;
+		double z1 = node1.z;
+		double x2 = node2.x;
+		double y2 = node2.y;
+		double z2 = node2.z;
+		
+		// TODO: code below only for flat overlap z = z'
+		double lxx = (x2 - x1) / length;
+		double lxy = (y2 - y1) / length;
+		double lxz = (z2 - z1) / length;
+		double lyx = lxy;
+		double lyy = lxx;
+		double lyz = 0;
+		double lzx = 0;
+		double lzy = 0;
+		double lzz = 1;
 	}
 
 }
