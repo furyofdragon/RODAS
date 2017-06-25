@@ -13,6 +13,7 @@ public class Rod {
 		for (int i = 0; i < 12; i++) {
 			for (int j = 0; j < 12; j++) {
 				Klocal[i][j] = 0;
+				Transl[i][j] = 0;
 			}
 		}
 	}
@@ -188,6 +189,46 @@ public class Rod {
 		double lzx = 0;
 		double lzy = 0;
 		double lzz = 1;
+		
+		Transl[0][0] = lxx;
+		Transl[0][1] = lxy;
+		Transl[0][2] = lxz;
+		Transl[1][0] = lyx;
+		Transl[1][1] = lyy;
+		Transl[1][2] = lyz;
+		Transl[2][0] = lzx;
+		Transl[2][1] = lzy;
+		Transl[2][2] = lzz;
+		
+		Transl[3][3] = lxx;
+		Transl[3][4] = lxy;
+		Transl[3][5] = lxz;
+		Transl[4][3] = lyx;
+		Transl[4][4] = lyy;
+		Transl[4][5] = lyz;
+		Transl[5][3] = lzx;
+		Transl[5][4] = lzy;
+		Transl[5][5] = lzz;
+		
+		Transl[6][6] = lxx;
+		Transl[6][7] = lxy;
+		Transl[6][8] = lxz;
+		Transl[7][6] = lyx;
+		Transl[7][7] = lyy;
+		Transl[7][8] = lyz;
+		Transl[8][6] = lzx;
+		Transl[8][7] = lzy;
+		Transl[8][8] = lzz;
+		
+		Transl[9][9]   = lxx;
+		Transl[9][10]  = lxy;
+		Transl[9][11]  = lxz;
+		Transl[10][9]  = lyx;
+		Transl[10][10] = lyy;
+		Transl[10][11] = lyz;
+		Transl[11][9]  = lzx;
+		Transl[11][10] = lzy;
+		Transl[11][11] = lzz;
 	}
 
 }
