@@ -103,6 +103,8 @@ public class FemModel {
 			FemModel.vRods.elementAt(i).setLength();
 			FemModel.vRods.elementAt(i).setMass();
 			FemModel.vRods.elementAt(i).calcKlocal();
+			FemModel.vRods.elementAt(i).calcTransl();
+			FemModel.vRods.elementAt(i).calcKglobal();
 		}
 		
 		// calc model mass
