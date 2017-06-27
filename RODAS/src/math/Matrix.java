@@ -26,4 +26,15 @@ public class Matrix {
 		}
 		return T;
 	}
+	
+	// return C = A * B
+	public Matrix times(Matrix A, Matrix B) {
+		if (A.n != B.m) throw new RuntimeException("Illegal matrix dimensions.");
+		Matrix C = new Matrix(A.m, B.n);
+		for (int i = 0; i < C.m; i++)
+			for (int j = 0; j < C.n; j++)
+				for (int k = 0; k < A.n; k++)
+					C.data[i][j] += (A.data[i][k] * B.data[k][j]);
+		return C;
+	}
 }
