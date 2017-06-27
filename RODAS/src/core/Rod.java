@@ -230,7 +230,7 @@ public class Rod {
 	
 	// element's stiffness matrix in global coordinates
 	public void calcKglobal() {
-		Matrix TranslT = Transl.transponse();
+		Kglobal = Matrix.times(Matrix.times(Transl.transponse(), Klocal), Transl);
 	}
 
 }
