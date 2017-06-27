@@ -8,7 +8,7 @@ public class Matrix {
 	
 	int m;				// number of rows
 	int n;				// number of columns
-	double[][] data;	// m-by-n array for internal storage of elements
+	public double[][] data;	// m-by-n array for internal storage of elements
 	
 	// create M-by-N matrix of 0's
 	public Matrix(int m, int n) {
