@@ -1,5 +1,7 @@
 package core;
 
+import math.Matrix;
+
 public class Rod {
 	
 	public Rod(int id, int startPointId, int endPointId, int sectionId, int materialId) {
@@ -9,13 +11,6 @@ public class Rod {
 		this.endPointId = endPointId;
 		this.sectionId = sectionId;
 		this.materialId = materialId;
-		
-		for (int i = 0; i < 12; i++) {
-			for (int j = 0; j < 12; j++) {
-				Klocal[i][j] = 0;
-				Transl[i][j] = 0;
-			}
-		}
 	}
 
 	int id;
@@ -27,8 +22,10 @@ public class Rod {
 	double length;
 	double mass;
 	
-	double[][] Klocal = new double[12][12];		// stiffness matrix 12x12 in local coordinates
-	double[][] Transl = new double[12][12];		// coordinate translation matrix
+	private int s = 12;								// matrix size
+	Matrix Klocal = new Matrix(s, s);		// stiffness matrix 12x12 in local coordinates
+	Matrix Kglobal = new Matrix(s, s);		// stiffness matrix 12x12 in global coordinates
+	Matrix Transl = new Matrix(s, s);		// coordinate translation matrix
 	
 	
 	public int getId() {
@@ -122,48 +119,48 @@ public class Rod {
 		// order
 		// u1x u1y u1z fi1x fi1y fi1z u2x u2y u2z fi2x fi2y fi2z
 			
-		Klocal[0][0]   = E * A / length;
-		Klocal[0][6]   = -1 * E * A / length;
+		Klocal.data[0][0]   = E * A / length;
+		Klocal.data[0][6]   = -1 * E * A / length;
 		
-		Klocal[1][1]   = 12 * E * Iy / length3;
-		Klocal[1][5]   = 6 * E * Iy / length2;
-		Klocal[1][7]   = -12 * E * Iy / length3;
-		Klocal[1][11]  = 6 * E * Iy / length2;
+		Klocal.data[1][1]   = 12 * E * Iy / length3;
+		Klocal.data[1][5]   = 6 * E * Iy / length2;
+		Klocal.data[1][7]   = -12 * E * Iy / length3;
+		Klocal.data[1][11]  = 6 * E * Iy / length2;
 		
-		Klocal[2][2]   = 12 * E * Iz / length3;
-		Klocal[2][4]   = -6 * E * Iz / length2;
-		Klocal[2][8]   = -12 * E * Iz / length3;
-		Klocal[2][10]  = -6 * E * Iz / length2;
+		Klocal.data[2][2]   = 12 * E * Iz / length3;
+		Klocal.data[2][4]   = -6 * E * Iz / length2;
+		Klocal.data[2][8]   = -12 * E * Iz / length3;
+		Klocal.data[2][10]  = -6 * E * Iz / length2;
 		
-		Klocal[3][3]   = G * Ik / length;
-		Klocal[3][9]   = -1 * G * Ik / length;
+		Klocal.data[3][3]   = G * Ik / length;
+		Klocal.data[3][9]   = -1 * G * Ik / length;
 		
-		Klocal[4][4]   = 4 * E * Iz / length;
-		Klocal[4][8]   = -6 * E * Iz / length2;
-		Klocal[4][10]  = 2 * E * Iz / length;
+		Klocal.data[4][4]   = 4 * E * Iz / length;
+		Klocal.data[4][8]   = -6 * E * Iz / length2;
+		Klocal.data[4][10]  = 2 * E * Iz / length;
 		
-		Klocal[5][5]   = 4 * E * Iy / length;
-		Klocal[5][7]   = -6 * E * Iy / length2;
-		Klocal[5][11]  = 2 * E * Iy / length;
+		Klocal.data[5][5]   = 4 * E * Iy / length;
+		Klocal.data[5][7]   = -6 * E * Iy / length2;
+		Klocal.data[5][11]  = 2 * E * Iy / length;
 		
-		Klocal[6][6]   = E * A / length;
+		Klocal.data[6][6]   = E * A / length;
 		
-		Klocal[7][7]   = 12 * E * Iy / length3;
-		Klocal[7][11]  = -6 * E * Iy / length2;
+		Klocal.data[7][7]   = 12 * E * Iy / length3;
+		Klocal.data[7][11]  = -6 * E * Iy / length2;
 		
-		Klocal[8][8]   = 12 * E * Iz / length3;
-		Klocal[8][10]  = 6 * E * Iz / length2;
+		Klocal.data[8][8]   = 12 * E * Iz / length3;
+		Klocal.data[8][10]  = 6 * E * Iz / length2;
 		
-		Klocal[9][9]   = G * Ik / length;
+		Klocal.data[9][9]   = G * Ik / length;
 		
-		Klocal[10][10] = 4 * E * Iz / length;
+		Klocal.data[10][10] = 4 * E * Iz / length;
 		
-		Klocal[11][11] = 4 * E * Iy / length;
+		Klocal.data[11][11] = 4 * E * Iy / length;
 		
 		// below main diagonal - symmetrical
-		for (int i = 1; i < 12; i++) {
+		for (int i = 1; i < s; i++) {
 			for (int j = 0; j < i; j++) {
-				Klocal[i][j] = Klocal[j][i];
+				Klocal.data[i][j] = Klocal.data[j][i];
 			}
 		}
 	}
@@ -190,45 +187,50 @@ public class Rod {
 		double lzy = 0;
 		double lzz = 1;
 		
-		Transl[0][0] = lxx;
-		Transl[0][1] = lxy;
-		Transl[0][2] = lxz;
-		Transl[1][0] = lyx;
-		Transl[1][1] = lyy;
-		Transl[1][2] = lyz;
-		Transl[2][0] = lzx;
-		Transl[2][1] = lzy;
-		Transl[2][2] = lzz;
+		Transl.data[0][0] = lxx;
+		Transl.data[0][1] = lxy;
+		Transl.data[0][2] = lxz;
+		Transl.data[1][0] = lyx;
+		Transl.data[1][1] = lyy;
+		Transl.data[1][2] = lyz;
+		Transl.data[2][0] = lzx;
+		Transl.data[2][1] = lzy;
+		Transl.data[2][2] = lzz;
 		
-		Transl[3][3] = lxx;
-		Transl[3][4] = lxy;
-		Transl[3][5] = lxz;
-		Transl[4][3] = lyx;
-		Transl[4][4] = lyy;
-		Transl[4][5] = lyz;
-		Transl[5][3] = lzx;
-		Transl[5][4] = lzy;
-		Transl[5][5] = lzz;
+		Transl.data[3][3] = lxx;
+		Transl.data[3][4] = lxy;
+		Transl.data[3][5] = lxz;
+		Transl.data[4][3] = lyx;
+		Transl.data[4][4] = lyy;
+		Transl.data[4][5] = lyz;
+		Transl.data[5][3] = lzx;
+		Transl.data[5][4] = lzy;
+		Transl.data[5][5] = lzz;
 		
-		Transl[6][6] = lxx;
-		Transl[6][7] = lxy;
-		Transl[6][8] = lxz;
-		Transl[7][6] = lyx;
-		Transl[7][7] = lyy;
-		Transl[7][8] = lyz;
-		Transl[8][6] = lzx;
-		Transl[8][7] = lzy;
-		Transl[8][8] = lzz;
+		Transl.data[6][6] = lxx;
+		Transl.data[6][7] = lxy;
+		Transl.data[6][8] = lxz;
+		Transl.data[7][6] = lyx;
+		Transl.data[7][7] = lyy;
+		Transl.data[7][8] = lyz;
+		Transl.data[8][6] = lzx;
+		Transl.data[8][7] = lzy;
+		Transl.data[8][8] = lzz;
 		
-		Transl[9][9]   = lxx;
-		Transl[9][10]  = lxy;
-		Transl[9][11]  = lxz;
-		Transl[10][9]  = lyx;
-		Transl[10][10] = lyy;
-		Transl[10][11] = lyz;
-		Transl[11][9]  = lzx;
-		Transl[11][10] = lzy;
-		Transl[11][11] = lzz;
+		Transl.data[9][9]   = lxx;
+		Transl.data[9][10]  = lxy;
+		Transl.data[9][11]  = lxz;
+		Transl.data[10][9]  = lyx;
+		Transl.data[10][10] = lyy;
+		Transl.data[10][11] = lyz;
+		Transl.data[11][9]  = lzx;
+		Transl.data[11][10] = lzy;
+		Transl.data[11][11] = lzz;
+	}
+	
+	// element's stiffness matrix in global coordinates
+	public void calcKglobal() {
+		Matrix TranslT = Transl.transponse();
 	}
 
 }
