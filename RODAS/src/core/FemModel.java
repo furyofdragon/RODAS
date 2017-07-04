@@ -102,15 +102,22 @@ public class FemModel {
 		for (int i = 0; i < FemModel.vRods.size(); i++) {
 			FemModel.vRods.elementAt(i).setLength();
 			FemModel.vRods.elementAt(i).setMass();
-			FemModel.vRods.elementAt(i).calcKlocal();
-			FemModel.vRods.elementAt(i).calcTransl();
-			FemModel.vRods.elementAt(i).calcKglobal();
 		}
 		
 		// calc model mass
 		FemModel.calcMass();
 		
 		FemModel.calcBoundaries();
+	}
+	
+	public static void solve() {
+		// update rods
+		for (int i = 0; i < FemModel.vRods.size(); i++) {
+			FemModel.vRods.elementAt(i).calcKlocal();
+			FemModel.vRods.elementAt(i).calcTransl();
+			FemModel.vRods.elementAt(i).calcKglobal();
+		}
+		
 	}
 
 }

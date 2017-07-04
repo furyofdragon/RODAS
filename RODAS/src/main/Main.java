@@ -16,6 +16,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import core.FemModel;
 import input.ReadFemModel;
 
 import java.awt.event.KeyEvent;
@@ -196,6 +197,17 @@ public class Main {
 			}
 		});
 		menuList.add(menuListMaterials);
+		
+		JMenu menuModel = new JMenu("Model");
+		menuBar.add(menuModel);
+		
+		JMenuItem menuSolve = new JMenuItem("Solve");
+		menuSolve.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FemModel.solve();
+			}
+		});
+		menuModel.add(menuSolve);
 		
 		JMenu menuHelp = new JMenu("Help");
 		menuBar.add(menuHelp);
