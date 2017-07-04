@@ -180,7 +180,7 @@ public class Rod {
 		double lxx = (x2 - x1) / length;
 		double lxy = (y2 - y1) / length;
 		double lxz = (z2 - z1) / length;
-		double lyx = lxy;
+		double lyx = -1 * lxy;
 		double lyy = lxx;
 		double lyz = 0;
 		double lzx = 0;
